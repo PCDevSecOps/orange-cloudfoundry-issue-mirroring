@@ -112,6 +112,8 @@ Code structure options:
 ## Searching ux options:
 * Cli
 * Ide search
+  * Not yet yaml structural search in intellij 
+     * [x] submit RFE: https://youtrack.jetbrains.com/issue/IDEA-344736/Structural-search-add-Json-Yaml-language
 
 ## Criteria searching options
 * IDE full-text search
