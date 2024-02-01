@@ -103,6 +103,36 @@ Code structure options:
 ## Fs layout options:
 * Custom: issue id / comments =
 * Natice Gh rest api structure
+* Some key metadata: status, 
+
+Main tree:
+issues/${number}/meta.yaml, body.yaml
+
+```
+issues/
+├── 1
+│   ├── body.md
+│   └── meta.yaml
+├── 10
+│   ├── body.md
+│   └── meta.yaml
+├── 100
+│   ├── body.md
+│   └── meta.yaml
+```
+
+### FS layout substree with metadata
+
+issues-with-metadata/by-title/${title}/${number}  (symlink-to: issues/${number})
+issues-with-metadata/by-status/${status}/${number} (symlink-to: issues/${number})
+issues-with-metadata/by-label/${label1}/${number}  (symlink-to: issues/${number})
+issues-with-metadata/by-label/${label2}/${number}  (symlink-to: issues/${number})
+issues-with-metadata/by-author/${author}/${number}  (symlink-to: issues/${number})
+issues-with-metadata/by-assignee/${assignee}/${number}  (symlink-to: issues/${number})
+
+automation ideas:
+* metadata json to bash variable + use in shell
+* cli output template produces shell commands to execute 
 
 ## Searching worflows:
 * By multiple criteria (open/closed, labels, authors, milestones)
@@ -115,6 +145,16 @@ Code structure options:
         * meta.yaml
         * body.md
   * Search text (C+S+A+E)
+
+UX Pbs in IDE-based full-text search: ![full-text-search screenshot](img.png)
+* [ ] Missing title in search result in body.md
+    * [ ] change body.md to body.yaml with title and body
+        * [] yq support for string litterals
+    * [ ] append title to body.md         
+      * [ ] append title to body.md after download
+      * [ ] remove title to body.md before upload
+* [ ] Missing sorting order (date asc/desc)
+* [ ] Missing filtering (open/closed)
 
 ## Searching ux priorities:
 * Responsiveness
