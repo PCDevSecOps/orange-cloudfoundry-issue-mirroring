@@ -36,10 +36,16 @@ How:
 * Files: meta-data, issue content, issue comments
 * Rdms: sqllite
 
-Issue File content: json/yaml produced from cli
+## Issue File content: json/yaml produced from cli
 
-Meta-data file content options:
+## Meta-data file content options:
+* Yaml
+  * [x] initial poc using jq
+     * [ ] tune format to get systematic string quotes around title
+  * [x] nice text search formatting in intellij search everywhere 
+  * [ ] format/collapse labels
 * Markdown
+   * Potential benefit of hyperlink to body file 
 * Csv
 * Rdms: sqllite
 * Code: js, ts, bash
@@ -99,8 +105,16 @@ Code structure options:
 * Natice Gh rest api structure
 
 ## Searching worflows:
-* By criteria:
-* By full text search
+* By multiple criteria (open/closed, labels, authors, milestones)
+  * Using regexps in IDE
+     * [x] (?s) to have . match new lines, see https://youtrack.jetbrains.com/issue/IDEA-69435/Search-for-Multi-line-fragment#focus=Comments-27-6381293.0-0 
+     * e.g. `(?s)OPEN.* cilium` 
+* By full text search:
+  * Search in files
+     * with file masks:
+        * meta.yaml
+        * body.md
+  * Search text (C+S+A+E)
 
 ## Searching ux priorities:
 * Responsiveness
