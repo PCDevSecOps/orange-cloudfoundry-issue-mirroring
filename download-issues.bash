@@ -2,12 +2,15 @@
 
 repo=orange-cloudfoundry/paas-templates
 skip_existing_issue=true
-limit=5
+limit=100
 #See https://github.com/cli/cli/issues/3098#issuecomment-802842606 for sorting
-last_issue=$(gh issue -R ${repo} list -L ${limit} --json number  --search sort:created-asc --state all | jq -r .[].number)
+last_issue=$(gh issue -R ${repo} list -L 1 --json number  --search sort:created-asc --state all | jq -r .[].number)
 # even with --limit 4000 the list only returns ~ 1200 issues, out of 2.500 issues total
 # therefore we take them all in sequential order from last one
-issues=$(seq 1 ${last_issue} )
+all_issues=$(seq 1 ${last_issue} )
+
+recent_issues=$(gh issue -R ${repo} list -L ${limit} --json number  --search sort:created-desc --state all | jq -r .[].number)
+issues=${recent_issues}
 for i in ${issues}; do
   if [[ "${skip_existing_issue}" == "true" && -d issues/$i ]]; then
     echo "skipping existing $i"
