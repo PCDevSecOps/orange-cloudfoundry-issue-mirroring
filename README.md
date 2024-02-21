@@ -25,7 +25,8 @@ See sample usage ![issue-mirroring](https://github.com/orange-cloudfoundry/issue
 
 * search issues with ide
 * search prs with ide
-* exec issues workaround code snippetsedit issues with ide
+* exec issues workaround code snippets
+* edit issues with ide
 * edit pr body with ide
 
 
